@@ -1,0 +1,33 @@
+import requests
+import os
+URL = 'https://translate.yandex.net/api/v1.5/tr.json/translate'
+KEY = 'trnsl.1.1.20200205T184601Z.f8615ebae3900218.f969271aaa79bbf52bee58600799d335c668bcab'\
+
+def translate_file(file_name, final_name):
+    with open(file_name, 'r', encoding='utf-8') as f:
+        content = f.read()
+    params = {
+        'key': KEY,
+        'text': content,
+        'lang': 'ru'
+  }
+    with open(final_name, 'w', encoding='utf-8') as file:
+        response = requests.get(URL, params=params)
+        json_ = response.json()
+        text = (' '.join(json_['text']))
+        file.write(text)
+
+def main():
+    while True:
+        name = os.path.join(input('Введите имя файла, который надо перевести:\n'))
+        if name == os.path.join('DE.txt'):
+            translate_file('DE.txt','DE_tran.txt')
+        elif name == os.path.join('ES.txt'):
+            translate_file('ES.txt','ES_tran.txt')
+        elif name == os.path.join('FR.txt'):
+            translate_file('FR.txt','FR_tran.txt')
+        else:
+            print('Неккоректный ввод, поторите\n')
+        break
+
+main()
