@@ -1,0 +1,10 @@
+import yadisk
+
+y = yadisk.YaDisk(token="AgAAAAACxfbBAADLW-DLhUDl80A7u4fA58QeMdA")
+
+y.mkdir("/translate/") # Создать папку
+y.upload("DE_tran.txt", "/translate/DE_tran.txt") 
+y.upload("ES_tran.txt", "/translate/ES_tran.txt")
+y.upload("FR_tran.txt", "/translate/FR_tran.txt") 
+
+print('Операция выполнена!\n')
