@@ -9,8 +9,8 @@ def translate_file(file_name, final_name, from_lang, to_lang ='ru'):
     params = {
         'key': KEY,
         'text': content,
-        'lang': 'ru'
-  }
+        'lang': f'{from_lang}-{to_lang}'
+    }
     with open(final_name, 'w', encoding='utf-8') as file:
         response = requests.get(URL, params=params)
         json_ = response.json()
