@@ -3,7 +3,7 @@ import os
 URL = 'https://translate.yandex.net/api/v1.5/tr.json/translate'
 KEY = 'trnsl.1.1.20200205T184601Z.f8615ebae3900218.f969271aaa79bbf52bee58600799d335c668bcab'\
 
-def translate_file(file_name, final_name):
+def translate_file(file_name, final_name, from_lang, to_lang ='ru'):
     with open(file_name, 'r', encoding='utf-8') as f:
         content = f.read()
     params = {
@@ -21,13 +21,14 @@ def main():
     while True:
         name = os.path.join(input('Введите имя файла, который надо перевести:\n'))
         if name == os.path.join('DE.txt'):
-            translate_file('DE.txt','DE_tran.txt')
+            translate_file('DE.txt','DE_tran.txt','de')
         elif name == os.path.join('ES.txt'):
-            translate_file('ES.txt','ES_tran.txt')
+            translate_file('ES.txt','ES_tran.txt','es')
         elif name == os.path.join('FR.txt'):
-            translate_file('FR.txt','FR_tran.txt')
+            translate_file('FR.txt','FR_tran.txt','fr')
         else:
             print('Неккоректный ввод, поторите\n')
+        print('Конец программы\n')
         break
 
 main()
